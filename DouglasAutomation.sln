@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DouglasAutomation", "DouglasAutomation\DouglasAutomation.csproj", "{565B4668-FDDA-454B-BC1A-FBDB8ADD2774}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{565B4668-FDDA-454B-BC1A-FBDB8ADD2774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565B4668-FDDA-454B-BC1A-FBDB8ADD2774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565B4668-FDDA-454B-BC1A-FBDB8ADD2774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565B4668-FDDA-454B-BC1A-FBDB8ADD2774}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9658042-6184-4B6B-8458-0CB60CA7D44C}
+	EndGlobalSection
+EndGlobal
