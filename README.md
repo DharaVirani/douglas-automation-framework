@@ -9,7 +9,6 @@ A complete BDD test automation framework using **Selenium WebDriver**, **SpecFlo
 - **Language:** C#
 - **Automation Tool:** Selenium WebDriver
 - **BDD:** Reqnroll (SpecFlow alternative)
-- **Test Framework:** NUnit
 - **Reporting:** ExtentReports
 - **Design Pattern:** Page Object Model (POM)
 - **IDE:** Visual Studio 2022
@@ -33,17 +32,10 @@ A complete BDD test automation framework using **Selenium WebDriver**, **SpecFlo
 ## 📸 Reporting
 
 - **Extent Report** is generated after each test run under:
-  
-\<project\_root>/Reports/ExtentReport.html
-
-```
 - It auto-opens after test execution
-
----
 
 ## ✨ Author
 **Dhara Virani**  
 Automation Test Engineer  
 📧 dhara28virani@gmail.com
 
-```
