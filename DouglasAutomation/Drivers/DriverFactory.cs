@@ -1,34 +1,31 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using System;
+using OpenQA.Selenium;
 
-namespace DouglasAutomation.Drivers
+public class DriverFactory
 {
-     class DriverFactory
+    public static IWebDriver Driver;
+
+
+    public static void InitializeDriver(string browser)
     {
-        private static IWebDriver _driver;
-
-           public static IWebDriver GetDriver(string browser = "chrome")
-           {
-            return browser.ToLower() switch
-            {
-                "firefox" => new FirefoxDriver(),
-                "edge" => new EdgeDriver(),
-                _ => new ChromeDriver(),
-            };
-           }
-        
-
-        public static void QuitDriver()
+        if (Driver == null)
         {
-            if (_driver != null)
+            if (browser.ToLower() == "chrome")
             {
-                _driver.Quit();
-                _driver = null;
+                ChromeOptions options = new ChromeOptions();
+                options.AddArgument("--remote-allow-origins=*"); // Fix if needed
+
+                Driver = new ChromeDriver(options);
             }
+
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
     }
-}
 
+
+    public static void QuitDriver()
+    {
+        Driver?.Quit();
+    }
+}

@@ -1,31 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
+﻿using OpenQA.Selenium;
 
-namespace DouglasAutomation.Pages
+public class HomePage : BasePage
 {
-     public class HomePage
+    private readonly string categoryLinkXPath = "//a[text()='{0}']";
+
+    public void ClickCategory(string category)
     {
-        private readonly IWebDriver _driver;
-
-        public HomePage(IWebDriver driver)
-        {
-            _driver = driver;
-        }
-
-        private readonly By searchBox = By.Id("search");  // example of another locator
-        private readonly By loginButton = By.XPath("//button[text()='Login']");
-      
-
-        public void ClickPerfumeTab()
-        {
-            _driver.FindElement(By.LinkText("Parfum")).Click();
-        }
-
+        var locator = By.XPath(string.Format(categoryLinkXPath, category));
+        Find(locator).Click();
+        Console.WriteLine($"✅ Clicked category: {category}");
     }
 }
+

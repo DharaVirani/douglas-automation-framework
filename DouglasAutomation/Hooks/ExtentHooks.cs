@@ -1,47 +1,48 @@
 ﻿using AventStack.ExtentReports;
 using Reqnroll;
-using NUnit.Framework;
-using System;
+using OpenQA.Selenium;
+using DouglasAutomation.Reports;
 
 namespace DouglasAutomation.Hooks
 {
     [Binding]
     public class ExtentHooks
     {
-        private static ExtentReports extent;
-        private static ExtentTest test;
-
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            extent = Helpers.ExtentManager.GetInstance();
+            ExtentManager.CreateExtentInstance();  // Start reporting
         }
 
         [BeforeScenario]
-        public void BeforeScenario(ScenarioContext scenarioContext)
+        public void BeforeScenario()
         {
-            test = extent.CreateTest(scenarioContext.ScenarioInfo.Title);
-            scenarioContext["extentTest"] = test;
+            DriverFactory.InitializeDriver("chrome");
+            DriverFactory.Driver.Manage().Window.Maximize();
+
+            ExtentManager.CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
         }
 
-        [AfterStep]
-        public void AfterEachStep(ScenarioContext scenarioContext)
+        [AfterScenario]
+        public void AfterScenario()
         {
-            var stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
-            var stepText = scenarioContext.StepContext.StepInfo.Text;
-
-            var currentTest = (ExtentTest)scenarioContext["extentTest"];
-
-            if (scenarioContext.TestError == null)
-                currentTest.Log(Status.Pass, $"{stepType}: {stepText}");
-            else
-                currentTest.Log(Status.Fail, $"{stepType}: {stepText}<br>{scenarioContext.TestError.Message}");
+            ExtentManager.FlushReport();          
+            DriverFactory.QuitDriver();          
         }
 
         [AfterTestRun]
         public static void AfterTestRun()
         {
-            extent.Flush();
+            ExtentManager.FlushReport();
+
+            // Automatically open the report after all tests (optional)
+            string reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports", "ExtentReport.html");
+            if (File.Exists(reportPath))
+            {
+                // This opens it in File Explorer, you can change "explorer" to "chrome" if needed
+                System.Diagnostics.Process.Start("explorer", reportPath);
+            }
         }
+
     }
 }

@@ -20,16 +20,16 @@ namespace DouglasAutomation.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Filter parfum products")]
+    [NUnit.Framework.DescriptionAttribute("Filter Parfum Products on Douglas")]
     [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class FilterParfumProductsFeature
+    public partial class FilterParfumProductsOnDouglasFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Filter parfum products", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Filter Parfum Products on Douglas", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
 #line 1 "ParfumNavigation.feature"
 #line hidden
@@ -83,19 +83,18 @@ namespace DouglasAutomation.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Apply filters to parfum page")]
-        [NUnit.Framework.TestCaseAttribute("Highlights", "Sale", null)]
-        [NUnit.Framework.TestCaseAttribute("Highlights", "Neu", null)]
-        [NUnit.Framework.TestCaseAttribute("Highlights", "Limitiert", null)]
-        [NUnit.Framework.TestCaseAttribute("Fur Wen", "M�nnlich", null)]
-        [NUnit.Framework.TestCaseAttribute("Fur Wen", "Weiblich", null)]
-        public async System.Threading.Tasks.Task ApplyFiltersToParfumPage(string filterType, string filterValue, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Filter parfum products based on criteria")]
+        [NUnit.Framework.TestCaseAttribute("Sale", "Dior", "Eau de Parfum", "Geburtstag", "Damen", null)]
+        public async System.Threading.Tasks.Task FilterParfumProductsBasedOnCriteria(string highlights, string marke, string produktart, string geschenkFur, string furWen, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("FilterType", filterType);
-            argumentsOfScenario.Add("FilterValue", filterValue);
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Apply filters to parfum page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("Highlights", highlights);
+            argumentsOfScenario.Add("Marke", marke);
+            argumentsOfScenario.Add("Produktart", produktart);
+            argumentsOfScenario.Add("Geschenk fur", geschenkFur);
+            argumentsOfScenario.Add("Fur Wen", furWen);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Filter parfum products based on criteria", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 3
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -107,19 +106,19 @@ namespace DouglasAutomation.Features
             {
                 await this.ScenarioStartAsync();
 #line 4
-    await testRunner.GivenAsync("I am on the Douglas homepage", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("I navigate to the Douglas homepage", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-        await testRunner.AndAsync("I accept the cookie policy", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("I accept the cookie consent", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 6
-    await testRunner.WhenAsync("I click on the \"Parfum\" tab", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("I click on the \"PARFUM\" category", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 7
-         await testRunner.AndAsync(string.Format("I apply the filter \"{0}\" with value \"{1}\"", filterType, filterValue), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync(string.Format("I apply filters: \"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\"", highlights, marke, produktart, geschenkFur, furWen), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 8
-    await testRunner.ThenAsync("I should see filtered results", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("I should see the filtered list of products", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

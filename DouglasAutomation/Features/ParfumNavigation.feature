@@ -1,15 +1,13 @@
-Feature: Filter parfum products
+Feature: Filter Parfum Products on Douglas
 
-  Scenario Outline: Apply filters to parfum page
-    Given I am on the Douglas homepage
-        And I accept the cookie policy
-    When I click on the "Parfum" tab
-         And I apply the filter "<FilterType>" with value "<FilterValue>"
-    Then I should see filtered results
+  Scenario Outline: Filter parfum products based on criteria
+    Given I navigate to the Douglas homepage
+    And I accept the cookie consent
+    When I click on the "PARFUM" category
+    And I apply filters: "<Highlights>", "<Marke>", "<Produktart>", "<Geschenk fur>", "<Fur Wen>"
+    Then I should see the filtered list of products
 
     Examples:
-      | FilterType   | FilterValue    |
-      | Fur Wen      | Männlich       |
-      | Fur Wen      | Weiblich       |
-      | Marke        | Dior           |
+      | Highlights | Marke  | Produktart     | Geschenk fur | Fur Wen |
+      | Sale       | Dior   | Eau de Parfum  | Geburtstag   | Damen   |
 
